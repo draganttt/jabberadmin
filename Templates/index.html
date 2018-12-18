@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Jabber XMPP Administration!</title>
+	</head>
+<style>
+table {border-color:black;}
+.tooltip {
+    display:inline-block;
+    position:relative;
+}
+
+
+</style>
+	<body style="background-color:#e0eaff;font-family:georgia;">
+		<h1 align="center">Jabber System Administration Tool</h1>
+		<h1 align="center">(JSAT)</h1>
+		<div align="center"><img src="/static/xmpp-logo.svg" width="20%"></div>
+		<div><button type="button"><a href="{{ url_for('rooms') }}">List of Jabber Rooms</a></button></div>
+		</br>
+		</br>
+		<div align="center"><h3>Login:</h3>
+			<form action="http://wikipedia.org" method="get">
+				<label for="username"></label>
+				<input type="text" placeholder="username" name="username" id="username" required>
+				<label for="password"></label>
+				<input type="password" placeholder="password" name="password" id="password" required>
+
+				<select name="usertype">
+					<option value="admin">Administrator</option>
+					<option value="user">Self Service</option>
+				</select>
+				<input type="submit">
+			</form>
+		</div>
+<script>
+	var tag = document.getElementById("username")
+	console.log(tag)
+</script>
+	</body>
+</html>

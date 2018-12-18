@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Room Details for {{ room }}</title>
+</head>
+<style>
+table {
+  border-collapse: collapse;
+  border: 1px solid blue;
+  width: 100%;
+}
+
+td {
+  border: 1px solid blue;
+  padding: 5px;
+  vertical-align: middle;
+  text-indent: 5px;
+  background: #e8edff;
+  color: #039;
+}
+
+th {
+  border: 1px solid blue;
+  padding: 5px;
+  vertical-align: middle;
+  text-indent: 5px;
+  background: #038;
+  color: white;
+}
+body {
+  background-color:#e0eaff;
+  font-family:georgia;
+}
+</style>
+<body>
+<button type="button"><a href="{{ url_for('index') }}">Back to Main</a></button>
+<button type="button"><a href="{{ url_for('rooms') }}">Back to Rooms</a></button>
+<div align="center"><span style="font-size:20px;">Configuration Details for the room:</span> <span style="font-size:20px; color:#038; font-weight:bold;text-transform: uppercase">{{ room[:room.index("@")] }}</span></div>
+<p>Room Name  {{ room[:room.index('@')] }}</p>
+<table style="width:100%" border="1">
+				<tr>
+					<th width="15%">Room Name</th>
+                    <th width="10%">Creator</th>
+					<th width="20%">Subject</th>
+					<th width="5%%">Type</th>
+                    <th width="25%">Configuration</th>
+                    <th width="8%">Arhived Messages</th>
+                    <th width="7%">Active Occupants</th>
+				</tr>
+				<tr>
+					<td>{{roomdetails[0][0][:roomdetails[0][0].index("@")]}}</td>
+					<td>{{roomdetails[0][1]}}</td>
+					<td>{{roomdetails[0][2]}}</td>
+					<td>{{roomdetails[0][3]}}</td>
+					<td style="padding: 0"> <table>
+						{% for key,value in configDict.items() %}
+						<tr>
+							<td>{{ key }}</td>
+							{% if value == '1' %}
+							<td><input type="checkbox" onclick="return false;" disabled="disabled" checked="checked"></td>
+							{% elif value == '0' %}
+							<td><input type="checkbox" onclick="return false;" disabled="disabled"></td>
+							{% else %}
+							<td>{{ value }}</td>
+							{% endif %}
+  						 </tr>
+							{% endfor %}
+					</table>
+					</td>
+                    <td>{{roomdetails[0][5]}}</td>
+                    <td>{{roomdetails[0][6]}}</td>
+				</tr>
+		</table>
+</body>
+</html>

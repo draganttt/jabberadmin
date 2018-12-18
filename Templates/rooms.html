@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>List of Jabber Rooms</title>
+	</head>
+<style>
+table {
+  border-collapse: collapse;
+  border: 1px solid blue;
+  width: 100%;
+}
+body {
+  background-color:#e0eaff;
+  font-family:georgia;
+}
+td {
+  border: 1px solid blue;
+  padding: 5px;
+  vertical-align: middle;
+  text-indent: 5px;
+  background: #e8edff;
+  color: #039;
+}
+
+th {
+  border: 1px solid blue;
+  padding: 5px;
+  vertical-align: middle;
+  text-indent: 5px;
+  background: #038;
+  color: white;
+}
+#roomInput {
+  background-image: url("{{url_for('static',filename='searchicon.png') }}"); /* Add a search icon to input */
+  background-position: 0% 50%; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: 40%; /* Full-width */
+  font-size: 15px;  /*Increase font-size */
+  padding: 2px 0px 2px 18px;  /*Add some padding */
+ /* border: 1px solid #ddd;  Add a grey border */
+}
+#roomTable {
+  border-collapse: collapse; /* Collapse borders */
+}
+#roomTable tr:hover {
+  /* Add a grey background color to the table header and on hover */
+  background-color: #f1f1f1;
+}
+</style>
+	<body>
+    <script>
+function myRoom() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("roomInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("roomTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+</br>
+<button type="button"><a href="{{ url_for('index') }}">Back to Main</a></button>
+<div><h1 align="center">List of Jabber Rooms (#Channels)</h1></div><div>Total Rooms: <b>{{ totalrooms }}</b></div>
+			<table id="roomTable">
+				<tr>
+					<th style="padding: 5px 0px 5px 0px; align="left" width="15%">Room Name <input type="text" id="roomInput" onkeyup="myRoom()" placeholder="Search.."></th>
+					<th width="55%">Room Title</th>
+					<th width="10%">Room Type</th>
+					<th width="10%">No. Messages</th>
+					<th colspan="2" width="10%">No. Occupants</th>
+				</tr>
+				{% for row in tc_rooms %}
+				<tr>
+					<td style="color:#038; font-weight:bold;text-transform: uppercase"><a href="{{ url_for('roomdetails', room=row[0]) }}" title="Click on the Room Name for more details">{{row[0][:row[0].index("@")]}}</a></td>
+					<td>{{row[2]}}</td>
+					<td>{{row[3]}}</td>
+					<td><b>{{row[4]}}</b></td>
+					<td><b>{{row[5]}}</b></td>
+					<td align="right"><button><a href="{{ url_for('occupants', room=row[0]) }}">List of Occupants</a></button></td>
+				</tr>
+				{% endfor %}
+		</table>
+	</body>
+</html>
