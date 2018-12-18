@@ -1,16 +1,15 @@
 import psycopg2
 from flask import Flask, render_template, request
 from lxml import etree
+from settings import config
+
 
 app = Flask(__name__)
 
 def connecttodb():
-	host=''
-	user = ''
-	password = ''
-	db = ''
 	try:
-		con = psycopg2.connect(dbname=db, user=user, host=host, password=password)
+		params = config()
+		con = psycopg2.connect(**params)
 		print('+=========================+')
 		print('|  CONNECTED TO DATABASE  |')
 		print('+=========================+')
