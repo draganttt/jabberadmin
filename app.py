@@ -30,8 +30,9 @@ def rooms():
 	rows_affected = cursor.rowcount
 	return render_template('rooms.html',tc_rooms=tc_rooms,totalrooms=rows_affected)
 
-@app.route('/occupants/<room>')
-def occupants(room):
+@app.route('/occupants')
+def occupants():
+	room = request.args.get('room')
 	cursor = connecttodb()
 	cursor.execute("select * from tc_users where room_jid = '%s' and role != 'none' order by role desc" % room)
 	tc_users = cursor.fetchall()
