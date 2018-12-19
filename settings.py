@@ -1,5 +1,5 @@
 from configparser import ConfigParser
-
+import psycopg2
 
 def config(filename='database.ini', section='postgresql'):
 	# create a parser
@@ -15,5 +15,17 @@ def config(filename='database.ini', section='postgresql'):
 			db[param[0]] = param[1]
 	else:
 		raise Exception('Section {0} not found in the {1} file'.format(section, filename))
-
 	return db
+
+def connecttodb():
+	try:
+		params = config()
+		con = psycopg2.connect(**params)
+		print('+=========================+')
+		print('|  CONNECTED TO DATABASE  |')
+		print('+=========================+')
+		return con.cursor()
+	except:
+		print('I am unable to connect to the database')
+		con = '0'
+		return con

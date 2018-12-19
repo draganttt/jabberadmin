@@ -7,9 +7,9 @@
 <style>
 
 </style>
-	<body class="container">
+	<body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="{{ url_for('index') }}">JSAT</a>
+  <a class="navbar-brand" href="#">JSAT</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -17,13 +17,13 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ url_for('rooms') }}">List of Rooms</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <a class="nav-link disabled" href="#">List of Occupants</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -32,13 +32,13 @@
     </form>
   </div>
 </nav>
-		<h1>Jabber System Administration Tool</h1>
-		<h1>(JSAT)</h1>
-		<div><img src="/static/xmpp-logo.svg" width="20%"></div>
-		<div><button type="button"><a href="{{ url_for('rooms') }}">List of Jabber Rooms</a></button></div>
+		<h1 align="center">Jabber System Administration Tool</h1>
+		<h1 align="center">(JSAT)</h1>
+		<div align="center"><img src="/static/xmpp-logo.svg" width="20%"></div>
+		<!--<div><button type="button"><a href="{{ url_for('rooms') }}">List of Jabber Rooms</a></button></div>-->
 		</br>
 		</br>
-		<div><h3>Login:</h3>
+		<div align="center"><h3>Login:</h3>
 			<form action="http://wikipedia.org" method="get">
 				<label for="username"></label>
 				<input type="text" placeholder="username" name="username" id="username" required>
@@ -51,7 +51,6 @@
 				</select>
 				<input type="submit">
 			</form>
-			<input type="password">
 		</div>
 	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
 	</body>

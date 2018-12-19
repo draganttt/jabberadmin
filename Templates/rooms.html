@@ -5,32 +5,6 @@
 		<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
 	</head>
 <style>
-table {
-  border-collapse: collapse;
-  border: 1px solid blue;
-  width: 100%;
-}
-body {
-  background-color:#e0eaff;
-  font-family:georgia;
-}
-td {
-  border: 1px solid blue;
-  padding: 5px;
-  vertical-align: middle;
-  text-indent: 5px;
-  background: #e8edff;
-  color: #039;
-}
-
-th {
-  border: 1px solid blue;
-  padding: 5px;
-  vertical-align: middle;
-  text-indent: 5px;
-  background: #038;
-  color: white;
-}
 #roomInput {
   background-image: url("{{url_for('static',filename='searchicon.png') }}"); /* Add a search icon to input */
   background-position: 0% 50%; /* Position the search icon */
@@ -50,7 +24,7 @@ th {
 </style>
 	<body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="{{ url_for('index') }}">JSAT</a>
+  <a class="navbar-brand" href="#">JSAT</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -58,24 +32,13 @@ th {
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
+        <a class="nav-link" href="{{ url_for('rooms') }}">List of Rooms</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <a class="nav-link disabled" href="#">List of Occupants</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -85,8 +48,6 @@ th {
   </div>
 </nav>
 
-</br>
-<button type="button"><a href="{{ url_for('index') }}">Back to Main</a></button>
 <div><h1 align="center">List of Jabber Rooms (#Channels)</h1></div><div>Total Rooms: <b>{{ totalrooms }}</b></div>
 			<table id="roomTable">
 				<tr>
@@ -130,5 +91,6 @@ function myRoom() {
   }
 }
 </script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
 	</body>
 </html>

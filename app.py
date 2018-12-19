@@ -1,24 +1,11 @@
 import psycopg2
 from flask import Flask, render_template, request
 from lxml import etree
-from settings import config
+from settings import config, connecttodb
 
 
 app = Flask(__name__)
 
-def connecttodb():
-	try:
-		params = config()
-		con = psycopg2.connect(**params)
-		print('+=========================+')
-		print('|  CONNECTED TO DATABASE  |')
-		print('+=========================+')
-		return con.cursor()
-	except:
-		print('I am unable to connect to the database')
-		con = '0'
-		return con
-		
 @app.route("/")
 @app.route("/index")
 def index():
