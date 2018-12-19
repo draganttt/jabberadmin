@@ -1,2 +1,2 @@
 # jabberadmin
-Jabber System Administration (JSAT)
+Jabber System Administration Tool (JSAT)
