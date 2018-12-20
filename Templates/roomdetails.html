@@ -6,9 +6,12 @@
 	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
 </head>
 <style>
-
+.table thead th {
+    vertical-align: center;
+    white-space: nowrap;
+    }
 </style>
-<body>
+<body class="container-fluid">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">JSAT</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,8 +37,10 @@
   </div>
 </nav>
 <div align="center"><span style="font-size:20px;">Configuration Details for the room:</span> <span style="font-size:20px; color:#038; font-weight:bold;text-transform: uppercase">{{ room[:room.index("@")] }}</span></div>
-<p>Room Name  {{ room[:room.index('@')] }}</p>
-<table style="width:100%" border="1">
+<p>Room Name:  <span style="font-weight:bold;text-transform: uppercase">{{ room[:room.index('@')] }}</span></p>
+<div class="table-responsive-sm">
+<table class="table table-bordered">
+	<thead class="thead-light">
 				<tr>
 					<th>Room Name</th>
                     <th>Creator</th>
@@ -44,11 +49,14 @@
                     <th>Arhived Messages</th>
                     <th>Active Occupants</th>
 				</tr>
+	</thead>
+	<tbody>
 				<tr>
-					<td>{{roomdetails[0][0][:roomdetails[0][0].index("@")]}}</td>
+					<td style="color:#038; font-weight:bold;text-transform: uppercase">{{roomdetails[0][0][:roomdetails[0][0].index("@")]}}</td>
 					<td>{{roomdetails[0][1]}}</td>
 					<td>{{roomdetails[0][2]}}</td>
-					<td style="padding: 0"> <table>
+					<td style="padding: 0">
+						<table>
 						{% for key,value in configDict.items() %}
 						<tr>
 							<td>{{ key }}</td>
@@ -66,7 +74,9 @@
                     <td>{{roomdetails[0][4]}}</td>
                     <td>{{roomdetails[0][5]}}</td>
 				</tr>
+	</tbody>
 		</table>
+</div>
 <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
 </body>
 </html>
