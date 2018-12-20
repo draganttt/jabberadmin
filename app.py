@@ -19,7 +19,7 @@ def rooms():
 		rows_affected = 0
 		return render_template('rooms.html', tc_rooms=tc_rooms, totalrooms=rows_affected)
 	else:
-		cursor.execute("select A.room_jid, A.creator_jid,A.subject,A.type,COALESCE(C.msg,0),COALESCE(B.rocc,0) from tc_rooms A left join (select room_jid, count(room_jid) as rocc from tc_users where role != 'none' group by room_jid) B on A.room_jid = B.room_jid left join (select to_jid, count(to_jid) as msg from tc_msgarchive group by to_jid) C on A.room_jid = C.to_jid order by B.rocc desc NULLS LAST")
+		cursor.execute("select A.room_jid, A.creator_jid,A.subject,A.type,COALESCE(B.rocc,0) from tc_rooms A left join (select room_jid, count(room_jid) as rocc from tc_users where role != 'none' group by room_jid) B on A.room_jid = B.room_jid order by B.rocc desc NULLS LAST")
 		tc_rooms = cursor.fetchall()
 		rows_affected = cursor.rowcount
 		return render_template('rooms.html',tc_rooms=tc_rooms,totalrooms=rows_affected)
@@ -50,9 +50,9 @@ def roomdetails():
 		configDict['fixed'] = 'No Connection to DB'
 		return render_template('roomdetails.html', room=room, roomdetails=roomdetails, configDict=configDict)
 	else:
-		cursor.execute("select A.room_jid, A.creator_jid,A.subject,A.type,A.config,COALESCE(C.msg,0),COALESCE(B.rocc,0) from tc_rooms A left join (select room_jid, count(room_jid) as rocc from tc_users where role != 'none' group by room_jid) B on A.room_jid = B.room_jid left join (select to_jid, count(to_jid) as msg from tc_msgarchive group by to_jid) C on A.room_jid = C.to_jid where A.room_jid = '%s' order by B.rocc desc NULLS LAST" % room)
+		cursor.execute("select A.room_jid, A.creator_jid,A.subject,A.config,COALESCE(C.msg,0),COALESCE(B.rocc,0) from tc_rooms A left join (select room_jid, count(room_jid) as rocc from tc_users where role != 'none' group by room_jid) B on A.room_jid = B.room_jid left join (select to_jid, count(to_jid) as msg from tc_msgarchive group by to_jid) C on A.room_jid = C.to_jid where A.room_jid = '%s' order by B.rocc desc NULLS LAST" % room)
 		roomdetails = cursor.fetchall()
-		roomconfig = roomdetails[0][4]
+		roomconfig = roomdetails[0][3]
 		configDict = {}
 		if roomconfig is "":
 			configDict['persistent'] = '0'

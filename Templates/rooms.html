@@ -49,13 +49,12 @@
 </nav>
 
 <div><h1 align="center">List of Jabber Rooms (#Channels)</h1></div><div>Total Rooms: <b>{{ totalrooms }}</b></div>
-			<table id="roomTable">
+			<table id="roomTable" class="table">
 				<tr>
-					<th style="padding: 5px 0px 5px 0px; align="left" width="15%">Room Name <input type="text" id="roomInput" onkeyup="myRoom()" placeholder="Search.."></th>
-					<th width="55%">Room Title</th>
-					<th width="10%">Room Type</th>
-					<th width="10%">No. Messages</th>
-					<th colspan="2" width="10%">No. Occupants</th>
+					<th style="padding: 5px 0px 5px 0px; align="left">Room Name <input type="text" id="roomInput" onkeyup="myRoom()" placeholder="Search.."></th>
+					<th >Room Title</th>
+					<th >Room Type</th>
+					<th colspan="2">No. Occupants</th>
 				</tr>
 				{% for row in tc_rooms %}
 				<tr>
@@ -63,7 +62,6 @@
 					<td>{{row[2]}}</td>
 					<td>{{row[3]}}</td>
 					<td><b>{{row[4]}}</b></td>
-					<td><b>{{row[5]}}</b></td>
 					<td align="right"><button><a href="{{ url_for('occupants', room=row[0]) }}">List of Occupants</a></button></td>
 				</tr>
 				{% endfor %}

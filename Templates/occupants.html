@@ -51,13 +51,13 @@
 
 <div align="center"><span style="font-size:20px;">List of Occupants in room:</span> <span style="font-size:20px; color:#038; font-weight:bold;text-transform: uppercase">{{ room[:room.index("@")] }}</span></div>
 <div>Total Occupants: <b>{{ totalocc }}</b></div>
-			<table style="width:100%" border="1" id="occTable">
+			<table id="occTable" class="table">
 				<tr>
-					<th width="15%">Room Name</th>
-                    <th style="padding: 5px 0px 5px 0px;" align="left" width="40%"> Occupants   <input type="text" id="occInput" onkeyup="myOcc()" placeholder="Search for Occupant.."></th>
-					<th width="10%">Role</th>
-					<th width="10%">Affiliation</th>
-					<th width="25%">Nick/Handle</th>
+					<th>Room Name</th>
+                    <th style="padding: 5px 0px 5px 0px;" align="left"> Occupants   <input type="text" id="occInput" onkeyup="myOcc()" placeholder="Search for Occupant.."></th>
+					<th>Role</th>
+					<th>Affiliation</th>
+					<th>Nick/Handle</th>
 				</tr>
 				{% for row in tc_users %}
 				<tr>

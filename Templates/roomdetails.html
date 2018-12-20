@@ -37,19 +37,17 @@
 <p>Room Name  {{ room[:room.index('@')] }}</p>
 <table style="width:100%" border="1">
 				<tr>
-					<th width="15%">Room Name</th>
-                    <th width="10%">Creator</th>
-					<th width="20%">Subject</th>
-					<th width="5%%">Type</th>
-                    <th width="25%">Configuration</th>
-                    <th width="8%">Arhived Messages</th>
-                    <th width="7%">Active Occupants</th>
+					<th>Room Name</th>
+                    <th>Creator</th>
+					<th>Subject</th>
+                    <th>Configuration</th>
+                    <th>Arhived Messages</th>
+                    <th>Active Occupants</th>
 				</tr>
 				<tr>
 					<td>{{roomdetails[0][0][:roomdetails[0][0].index("@")]}}</td>
 					<td>{{roomdetails[0][1]}}</td>
 					<td>{{roomdetails[0][2]}}</td>
-					<td>{{roomdetails[0][3]}}</td>
 					<td style="padding: 0"> <table>
 						{% for key,value in configDict.items() %}
 						<tr>
@@ -65,8 +63,8 @@
 							{% endfor %}
 					</table>
 					</td>
+                    <td>{{roomdetails[0][4]}}</td>
                     <td>{{roomdetails[0][5]}}</td>
-                    <td>{{roomdetails[0][6]}}</td>
 				</tr>
 		</table>
 <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
