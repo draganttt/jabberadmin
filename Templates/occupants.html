@@ -10,10 +10,7 @@
   background-image: url("{{url_for('static',filename='searchicon.png') }}"); /* Add a search icon to input */
   background-position: 0% 50%; /* Position the search icon */
   background-repeat: no-repeat; /* Do not repeat the icon image */
-  width: 70%; /* Full-width */
-  font-size: 15px;  /*Increase font-size */
-  padding: 2px 0px 2px 18px;  /*Add some padding */
- /* border: 1px solid #ddd;  Add a grey border */
+  padding-left: 20px;  /*Add some padding */
 }
 #occTable {
   border-collapse: collapse; /* Collapse borders */
@@ -43,7 +40,7 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search for Occupant..." aria-label="Search" id="occInput" onkeyup="myOcc()">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
@@ -56,7 +53,7 @@
 				<thead class="thead-light">
 				<tr>
 					<th>Room Name</th>
-					<th>Occupants<input type="text" id="occInput" onkeyup="myOcc()" placeholder="Search for Occupant.."></th>
+					<th>Occupants</th>
 					<th>Role</th>
 					<th>Affiliation</th>
 					<th>Nick/Handle</th>

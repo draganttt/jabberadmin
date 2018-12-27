@@ -9,10 +9,7 @@
   background-image: url("{{url_for('static',filename='searchicon.png') }}"); /* Add a search icon to input */
   background-position: 0% 50%; /* Position the search icon */
   background-repeat: no-repeat; /* Do not repeat the icon image */
-  width: 40%; /* Full-width */
-  font-size: 15px;  /*Increase font-size */
-  padding: 2px 0px 2px 18px;  /*Add some padding */
- /* border: 1px solid #ddd;  Add a grey border */
+  padding-left: 20px;  /*Add some padding */
 }
 #roomTable {
   border-collapse: collapse; /* Collapse borders */
@@ -42,7 +39,7 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search Room..." aria-label="Search" id="roomInput" onkeyup="myRoom()">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
@@ -54,7 +51,7 @@
 			<table id="roomTable" class="table table-bordered" style="table-layout: auto; width: 100%;">
                 <thead class="thead-light">
 				<tr>
-					<th width="35%">Room Name <input type="text" id="roomInput" onkeyup="myRoom()" placeholder="Search.."></th>
+					<th width="35%">Room Name</th>
 					<th width="45%">Room Title</th>
 					<th width="10%">Room Type</th>
 					<th colspan="2" width="10%">No. Occupants</th>
