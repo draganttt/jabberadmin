@@ -22,7 +22,7 @@
 </style>
 	<body class="container-fluid">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">JSAT</a>
+  <a class="navbar-brand"><b>JSAT</b></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -36,7 +36,7 @@
         <a class="nav-link" href="{{ url_for('rooms') }}">List of Rooms</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">List of Occupants</a>
+        <a class="nav-link" href="{{ url_for('roomdetails', room=tc_users[0]) }}">Room Details</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -49,7 +49,7 @@
 <div align="center"><span style="font-size:20px;">List of Occupants in room:</span> <span style="font-size:20px; color:#038; font-weight:bold;text-transform: uppercase">{{ room[:room.index("@")] }}</span></div>
 <div>Total Occupants: <b>{{ totalocc }}</b></div>
 <div class="table-responsive-sm">
-			<table id="occTable" class="table table-bordered">
+			<table id="occTable" class="table table-bordered table-hover">
 				<thead class="thead-light">
 				<tr>
 					<th>Room Name</th>
@@ -57,6 +57,7 @@
 					<th>Role</th>
 					<th>Affiliation</th>
 					<th>Nick/Handle</th>
+					<th>Action</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -67,6 +68,7 @@
 					<td>{{row[2]}}</td>
 					<td>{{row[3]}}</td>
 					<td>{{row[4].split('/', 1)[1]}}</td>
+					<td><a class="btn btn-secondary btn-sm" href="#"> Kick</a></td>
 				</tr>
 				{% endfor %}
 				</tbody>
@@ -77,6 +79,7 @@
 					<th>Role</th>
 					<th>Affiliation</th>
 					<th>Nick/Handle</th>
+					<th>Action</th>
 				</tr>
 				</tfoot>
 		</table>

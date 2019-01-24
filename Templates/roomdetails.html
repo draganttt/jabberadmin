@@ -13,7 +13,7 @@
 </style>
 <body class="container-fluid">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">JSAT</a>
+  <a class="navbar-brand"><b>JSAT</b></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -27,7 +27,7 @@
         <a class="nav-link" href="{{ url_for('rooms') }}">List of Rooms</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">List of Occupants</a>
+        <a class="nav-link" href="{{ url_for('occupants', room=roomdetails[0][0]) }}">List of Occupants</a>
       </li>
     </ul>
     <!--<form class="form-inline my-2 my-lg-0">-->
@@ -56,7 +56,7 @@
 					<td>{{roomdetails[0][1]}}</td>
 					<td>{{roomdetails[0][2]}}</td>
 					<td style="padding: 0">
-						<table>
+						<table class="table-hover">
 						{% for key,value in configDict.items() %}
 						<tr>
 							<td>{{ key }}</td>

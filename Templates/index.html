@@ -9,7 +9,7 @@
 </style>
 	<body class="container-fluid">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">JSAT</a>
+  <a class="navbar-brand"><b>JSAT</b></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -21,9 +21,6 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ url_for('rooms') }}">List of Rooms</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">List of Occupants</a>
       </li>
     </ul>
     <!--<form class="form-inline my-2 my-lg-0">-->
@@ -45,7 +42,7 @@
 				<label for="password"></label>
 				<input type="password" placeholder="password" name="password" id="password" required>
 
-				<select name="usertype">
+				<select name="usertype" class="dropdown">
 					<option value="admin">Administrator</option>
 					<option value="user">Self Service</option>
 				</select>
